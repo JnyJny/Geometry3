@@ -37,7 +37,7 @@ Once installed,
 
 .. code:: python
 
-	from Geometry3 import Point
+	from geometry3 import Point
 
 	o = Point()
 	p = Point(1,1,1)
