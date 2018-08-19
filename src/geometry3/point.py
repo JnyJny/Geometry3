@@ -168,11 +168,11 @@ class Point:
         return self._unary_(operator.abs)
 
 
-    def distance(self, other=none):
+    def distance(self, other=None):
 
         return math.sqrt(self.distance_squared(other or point()))
 
-    def distance_squared(self, other=none):
+    def distance_squared(self, other=None):
         
         return sum((((other or point()) - self)**2))
 
@@ -186,25 +186,25 @@ class Point:
 
         :param b:    point
         :param c:    point
-        :param axis: string in "xxyyzz"
+        :param axis: string in "xXyYzZ"
         :return: float
 
-        raises valueerror if axis is not in "xxyyzz".
+        raises valueerror if axis is not in "xXyYzZ".
         '''
 
         bsuba = b - self
         csuba = c - self
 
-        if axis in 'zz':
+        if axis in 'zZ':
             return (bsuba.x * csuba.y) - (bsuba.y * csuba.x)
 
-        if axis in 'yy':
+        if axis in 'yY':
             return (bsuba.x * csuba.z) - (bsuba.z * csuba.x)
 
-        if axis in 'xx':
+        if axis in 'xX':
             return (bsuba.y * csuba.z) - (bsuba.z * csuba.y)
 
-        raise valueerror(f'invalid axis={axis}, not in "xxyyzz"')
+        raise ValueError(f'invalid axis={axis}, not in "xXyYzZ"')
 
 
     def is_ccw(self, b, c, axis='z'):
