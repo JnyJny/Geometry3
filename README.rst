@@ -20,6 +20,7 @@ TL;DR
 1. Install with pip
 
 .. code:: bash
+
 	  $ pip3 install -U geometry3
 	  
 
