@@ -170,11 +170,11 @@ class Point:
 
     def distance(self, other=None):
 
-        return math.sqrt(self.distance_squared(other or point()))
+        return math.sqrt(self.distance_squared(other or Point()))
 
     def distance_squared(self, other=None):
         
-        return sum((((other or point()) - self)**2))
+        return sum((((other or Point()) - self)**2))
 
     def ccw(self, b, c, axis='z'):
         '''this function determines direction of rotation described by
