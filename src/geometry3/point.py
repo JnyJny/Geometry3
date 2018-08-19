@@ -21,6 +21,10 @@ class Point:
     w : float = 1
 
     @classmethod
+    def fromPoint(cls, point):
+        return cls(point.x, point.y, point.z)
+
+    @classmethod
     def units(cls, scale=1):
 
         return cls(x=scale), cls(y=scale), cls(z=scale)
@@ -107,11 +111,19 @@ class Point:
         
         return self._binary_(other, operator.add)
 
+    def __radd__(self, other):
+        
+        return self._binary_(other, operator.add)
+
     def __iadd__(self, other):
         
         return self._binary_(other, operator.add, in_place=true)
 
     def __sub__(self, other):
+        
+        return self._binary_(other, operator.sub)
+
+    def __rsub__(self, other):
         
         return self._binary_(other, operator.sub)
 
@@ -123,6 +135,10 @@ class Point:
         
         return self._binary_(other, operator.mul)
 
+    def __rmul__(self, other):
+        
+        return self._binary_(other, operator.mul)
+
     def __imul__(self, other):
         
         return self._binary_(other, operator.mul, in_place=true)
@@ -131,11 +147,19 @@ class Point:
         
         return self._binary_(other, operator.floordiv)
 
+    def __rfloordiv__(self, other):
+        
+        return self._binary_(other, operator.floordiv)
+    
     def __ifloordiv__(self, other):
         
         return self._binary_(other, operator.floordiv, in_place=true)
 
     def __truediv__(self, other):
+        
+        return self._binary_(other, operator.truediv)
+
+    def __rtruediv__(self, other):
         
         return self._binary_(other, operator.truediv)
 
