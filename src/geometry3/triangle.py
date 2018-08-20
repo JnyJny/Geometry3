@@ -23,3 +23,7 @@ class Triangle(Polygon):
     def is_scalene(self):
         raise NotImplementedError()
 
+    @property
+    def is_equilateral(self):
+        raise NotImplementedError()
+
