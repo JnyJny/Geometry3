@@ -16,7 +16,6 @@ setuptools.setup(
     author_email='erik.oshaughnessy@gmail.com',
     description='Python geometry library',
     long_description=README,
-    long_description_content_type='text/x-rst',
     classifiers=[
         # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 3 - Alpha',
@@ -31,6 +30,20 @@ setuptools.setup(
     keywords='geometry',
     url='https://github.com/jnyjny/geometry3',
     license='Apache License, Version 2.0',
-    package_dir={ '':'src' },
+    package_dir={'': 'src' },
     packages=setuptools.find_packages(where='src'),
+    setup_requires=[
+        'pytest-runner',
+        'readme-renderer',
+        'twine',
+    ],
+    install_requires=[],
+    tests_require=[
+        'pytest',
+        'pytest-cov',
+        'pytest-flakes',
+        'pytest-pep8',
+        'autopep8',
+        'flake8',
+    ],
 )

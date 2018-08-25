@@ -13,14 +13,13 @@ class Line:
     A: Point
     B: Point
 
+
 class Ray(Line):
     pass
 
+
 class Segment(Line):
 
-    @proprety
+    @property
     def length(self):
         return self.A.distance(self.B)
-
-
-

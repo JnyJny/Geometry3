@@ -5,11 +5,12 @@ from dataclasses import dataclass
 from .point import Point
 from .polygon import Polygon
 
+
 @dataclass
 class Triangle(Polygon):
-    A : Point
-    B : Point
-    C : Point
+    A: Point
+    B: Point
+    C: Point
 
     @property
     def vertices(self):
@@ -26,4 +27,3 @@ class Triangle(Polygon):
     @property
     def is_equilateral(self):
         raise NotImplementedError()
-

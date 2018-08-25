@@ -10,15 +10,17 @@ import hashlib
 _half_pi = math.pi / 2
 _two_pi = math.pi * 2
 
+
 class ColinearPoints(Exception):
     pass
 
+
 @dataclass
 class Point:
-    x : float = 0
-    y : float = 0
-    z : float = 0
-    w : float = 1
+    x: float = 0
+    y: float = 0
+    z: float = 0
+    w: float = 1
 
     @classmethod
     def fromPoint(cls, point):
@@ -40,9 +42,9 @@ class Point:
     def random(cls, origin=None, radius=1):
 
         p = origin or Point()
-        r,u,v = (random.uniform(0, radius),
-                 random.uniform(0, _two_pi),
-                 random.uniform(-_half_pi, _half_pi))
+        r, u, v = (random.uniform(0, radius),
+                   random.uniform(0, _two_pi),
+                   random.uniform(-_half_pi, _half_pi))
         rcosv = r * math.cos(v)
         cosu, sinu, sinv = math.cos(u), math.sin(u), math.sin(v)
         p += rcosv * cosu, rcosv * sinu, radius * sinv
@@ -54,23 +56,23 @@ class Point:
 
     @property
     def xy(self):
-        return self.x,self.y
+        return self.x, self.y
 
     @xy.setter
-    def xy(self):
-        self.x,self.y = xy[:2]
+    def xy(self, xy):
+        self.x, self.y = xy[:2]
 
     @property
     def xyz(self):
-        return self.x,self.y,self.z
+        return self.x, self.y, self.z
 
     @xyz.setter
     def xyz(self, xyz):
-        self.x,self.y,self.z = xyz[:3]
+        self.x, self.y, self.z = xyz[:3]
 
     @property
     def xyzw(self):
-        return self.x,self.y,self.z,self.w
+        return self.x, self.y, self.z, self.w
 
     @xyzw.setter
     def xyzw(self, xyzw):
@@ -80,7 +82,7 @@ class Point:
 
         if self.is_origin:
             return 0
-        
+
         return int(hashlib.sha1(bytes(self)).hexdigest(), 16)
 
     def _binary_(self, other, func, in_place=False):
@@ -88,12 +90,12 @@ class Point:
         '''
         target = self if in_place else Point()
         try:
-            target.xyz = [func(a,b) for a,b in zip(self, other)]
+            target.xyz = [func(a, b) for a, b in zip(self, other)]
             return target
         except TypeError:
             pass
 
-        target.xyz = [func(a,b) for a,b  in zip(self, [other]*3)]
+        target.xyz = [func(a, b) for a, b in zip(self, [other] * 3)]
         return target
 
     def _unary_(self, func):
@@ -104,67 +106,67 @@ class Point:
         return target
 
     def __iter__(self):
-        
+
         return iter(self.xyz)
 
     def __add__(self, other):
-        
+
         return self._binary_(other, operator.add)
 
     def __radd__(self, other):
-        
+
         return self._binary_(other, operator.add)
 
     def __iadd__(self, other):
-        
+
         return self._binary_(other, operator.add, in_place=true)
 
     def __sub__(self, other):
-        
+
         return self._binary_(other, operator.sub)
 
     def __rsub__(self, other):
-        
+
         return self._binary_(other, operator.sub)
 
     def __isub__(self, other):
-        
+
         return self._binary_(other, operator.sub, in_place=true)
 
     def __mul__(self, other):
-        
+
         return self._binary_(other, operator.mul)
 
     def __rmul__(self, other):
-        
+
         return self._binary_(other, operator.mul)
 
     def __imul__(self, other):
-        
+
         return self._binary_(other, operator.mul, in_place=true)
 
     def __floordiv__(self, other):
-        
+
         return self._binary_(other, operator.floordiv)
 
     def __rfloordiv__(self, other):
-        
+
         return self._binary_(other, operator.floordiv)
-    
+
     def __ifloordiv__(self, other):
-        
+
         return self._binary_(other, operator.floordiv, in_place=true)
 
     def __truediv__(self, other):
-        
+
         return self._binary_(other, operator.truediv)
 
     def __rtruediv__(self, other):
-        
+
         return self._binary_(other, operator.truediv)
 
     def __itruediv__(self, other):
-        
+
         return self._binary_(other, operator.truediv, in_place=true)
 
     def __pow__(self, exponent):
@@ -191,13 +193,12 @@ class Point:
 
         return self._unary_(operator.abs)
 
-
     def distance(self, other=None):
 
         return math.sqrt(self.distance_squared(other or Point()))
 
     def distance_squared(self, other=None):
-        
+
         return sum((((other or Point()) - self)**2))
 
     def ccw(self, b, c, axis='z'):
@@ -230,7 +231,6 @@ class Point:
 
         raise ValueError(f'invalid axis={axis}, not in "xXyYzZ"')
 
-
     def is_ccw(self, b, c, axis='z'):
 
         result = self.ccw(b, c, axis)
@@ -245,8 +245,3 @@ class Point:
     def midpoint(self, other=None):
 
         return (self - (other or Point())) / 2
-    
-    
-
-            
-    

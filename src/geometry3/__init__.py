@@ -12,4 +12,3 @@ __all__ = ['Point',
            'Triangle',
            'Ellipse', 'Circle',
            ]
-

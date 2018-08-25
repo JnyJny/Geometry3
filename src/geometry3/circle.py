@@ -9,8 +9,8 @@ import math
 
 @dataclass
 class Ellipse:
-    center: Point = (0,0,0)
-    radius: Point = (1,0,0)
+    center: Point = (0, 0, 0)
+    radius: Point = (1, 0, 0)
 
     def __hash__(self):
         return hash(self.center) + hash(self.radius)
@@ -38,7 +38,7 @@ class Ellipse:
     @property
     def y_is_minor_axis(self):
         return self.minor_radius == self.radius.y
-    
+
     @property
     def eccentricity(self):
         '''
@@ -56,7 +56,7 @@ class Ellipse:
 
         '''
         return math.sqrt(1 - ((self.minor_radius / self.major_radius) ** 2))
-    
+
     @property
     def linear_eccentricity(self):
         '''
@@ -64,7 +64,7 @@ class Ellipse:
 
         '''
         return math.sqrt((self.major_radius ** 2) - (self.minor_radius ** 2))
-        
+
     @property
     def a(self):
         '''
@@ -79,7 +79,7 @@ class Ellipse:
             a.y += self.major_radius
         return a
 
-        @property
+    @property
     def a_neg(self):
         '''
         Negative antipodal point on the major axis, Point class.
@@ -168,7 +168,6 @@ class Ellipse:
 
         '''
         return [self.focus0, self.focus1]
-    
 
     @property
     def major_axis(self):
@@ -179,7 +178,7 @@ class Ellipse:
     def minor_axis(self):
         return Segment(self.b_neg, self.b)
 
-    @proprety
+    @property
     def is_circle(self):
         return self.radius.x == self.radius.y
 
@@ -195,18 +194,17 @@ class Ellipse:
         # d > majorAxis.length exterior point
         return d <= self.major_axis.length
 
-    
-    
+
 @dataclass
 class Circle:
-    radius : float = 1
+    radius: float = 1
 
     def __contains__(self, point):
 
         return point.distance(self.center) <= self.radius
 
     def __hash__(self):
-        
+
         return hash(self.center) + hash(bytes(self.radius))
 
     @property
@@ -214,16 +212,12 @@ class Circle:
 
         return self.radius * 2
 
-
-    @propertyy
+    @property
     def circumfrence(self):
 
         return 2 * math.pi * self.radius
-
 
     @property
     def area(self):
 
         return math.pi * (self.radius ** 2)
-    
-    
