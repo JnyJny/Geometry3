@@ -1,11 +1,13 @@
 # Geometry3 Makefile
 # 
-VERSION=1.0
+VERSION= 0.1.0
 PYTHON= python3
 SETUP_PY= setup.py
 TWINE= twine
 PYPI= testpypi
 TEMP= build dist
+
+.PHONY: VERSION test readme bdist sdist release upload clean
 
 all:
 	@echo "VERSION=$(VERSION)"
@@ -33,7 +35,7 @@ sdist: VERSION
 readme: VERSION README.rst
 	$(PYTHON) $(SETUP_PY) check -r -s
 
-release: clean VERSION readme bdist sdist
+release: VERSION readme bdist sdist
 
 
 upload: release 
