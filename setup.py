@@ -38,7 +38,6 @@ setuptools.setup(
         'twine',
     ],
     install_requires=[],
-    test_suite='tests',
     tests_require=[
         'pytest',
         'pytest-cov',
