@@ -30,7 +30,7 @@ setuptools.setup(
     keywords='geometry',
     url='https://github.com/jnyjny/geometry3',
     license='Apache License, Version 2.0',
-    package_dir={'': 'src' },
+    package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
     setup_requires=[
         'pytest-runner',

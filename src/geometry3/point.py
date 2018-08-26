@@ -101,7 +101,7 @@ class Point:
     def _unary_(self, func):
         '''
         '''
-        target = point()
+        target = Point()
         target.xyz = [func(v) for v in self]
         return target
 
@@ -119,7 +119,7 @@ class Point:
 
     def __iadd__(self, other):
 
-        return self._binary_(other, operator.add, in_place=true)
+        return self._binary_(other, operator.add, in_place=True)
 
     def __sub__(self, other):
 
@@ -131,7 +131,7 @@ class Point:
 
     def __isub__(self, other):
 
-        return self._binary_(other, operator.sub, in_place=true)
+        return self._binary_(other, operator.sub, in_place=True)
 
     def __mul__(self, other):
 
@@ -143,7 +143,7 @@ class Point:
 
     def __imul__(self, other):
 
-        return self._binary_(other, operator.mul, in_place=true)
+        return self._binary_(other, operator.mul, in_place=True)
 
     def __floordiv__(self, other):
 
@@ -155,7 +155,7 @@ class Point:
 
     def __ifloordiv__(self, other):
 
-        return self._binary_(other, operator.floordiv, in_place=true)
+        return self._binary_(other, operator.floordiv, in_place=True)
 
     def __truediv__(self, other):
 
@@ -167,7 +167,7 @@ class Point:
 
     def __itruediv__(self, other):
 
-        return self._binary_(other, operator.truediv, in_place=true)
+        return self._binary_(other, operator.truediv, in_place=True)
 
     def __pow__(self, exponent):
 
@@ -175,7 +175,7 @@ class Point:
 
     def __ipow__(self, exponent):
 
-        return self._binary_(exponent, operator.pow, in_place=true)
+        return self._binary_(exponent, operator.pow, in_place=True)
 
     def __pos__(self):
 

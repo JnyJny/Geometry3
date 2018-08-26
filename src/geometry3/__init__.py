@@ -9,6 +9,7 @@ from .circle import Ellipse, Circle
 
 __all__ = ['Point',
            'Line', 'Ray', 'Segment',
+           'Polygon',
            'Triangle',
            'Ellipse', 'Circle',
            ]
