@@ -244,4 +244,4 @@ class Point:
 
     def midpoint(self, other=None):
 
-        return (self - (other or Point())) / 2
+        return abs((self - (other or Point())) / 2)
